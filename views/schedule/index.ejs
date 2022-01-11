@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeaderSchedule.ejs')%>
+
+    <div class="bodyblock">
+        
+        <br>
+        <% let count = 0 %>
+        <%if(Object.keys(dataObject).length > 0){%>
+            <div class="row">
+                <% Object.keys(dataObject).forEach(scheduleData=> { %>                    
+                    <br> 
+                    <h2><%= scheduleData %></h2>                  
+                    <% dataObject[scheduleData].map(value => { %>
+                        <% count = count + 1 %>
+                        <br>
+                        <div class="newsTitle">
+                            <a href="/schedule/<%= value.id%>"> <%= value.host %> vs   <%= value.opponent %> </a>
+                        </div>                       
+                        <span>  <b><%= new Date(  value.date.toISOString() ).toLocaleDateString() %> : <%= value.startTime %> </b> - Hosted By : <%= value.host %> </span>
+                        <br>
+                    <%  });  %>
+                <%  }); %>
+            </div>
+        <% } else{ %>
+            <p>There are no schedule to display</p>
+            <p>Please add a new schedule to display here</p>
+        <% } %>
+
+    <% let i=0; if(Object.keys(dataObject).length=0){ i=20 } else { i= 20 - count } %>
+    <% for (let j=0; j < i; j++) { %>
+            <br>
+    <% }%>
+    
+</div>
+<%- include('../partials/footer.ejs')%>

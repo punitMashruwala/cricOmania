@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeader.ejs')%>
+
+    <div class="bodyblock">
+        
+        <br>
+        <% let count = 0 %>
+        <%if(Object.keys(dataObject).length > 0){%>
+            <div class="row">
+                <% Object.keys(dataObject).forEach(news=> { %>                    
+                    <br> 
+                    <h2><%= news %></h2>                  
+                    <% dataObject[news].map(value => { %>
+                        <% count = count + 1 %>
+                        <br>
+                        <div class="newsTitle">
+                            <a href="/news/<%= value.id%>"> <%= value.title %> </a>
+                        </div>                       
+                        <span>  <%= new Date(  value.date.toISOString() ).toLocaleDateString() %> - Written By : <%= value.author %> </span>
+                        <br>
+                    <%  });  %>
+                <%  }); %>
+            </div>
+        <% } else{ %>
+            <p>There are no news to display</p>
+            <p>Please add a new news to display here</p>
+        <% } %>
+
+    <% let i=0; if(Object.keys(dataObject).length=0){ i=19 } else { i=19 - count } %>
+    <% for (let j=0; j < i; j++) { %>
+            <br>
+    <% }%>
+    
+</div>
+<%- include('../partials/footer.ejs')%>

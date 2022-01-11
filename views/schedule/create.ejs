@@ -1,0 +1,130 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeaderSchedule.ejs')%>
+
+<div class="bodyblock">
+    <form action='/schedule' method='POST'>
+        <table>
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span> Tournament Title/Name:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="tournamentTitle" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Match Type:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="matchType" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Host's Name (Home Team): </span>
+                    </td>
+                    <td>
+                        <input type="text" name="host" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Host Team Logo Image:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="team1LogoImage" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Opponent's Name (Away Team): </span>
+                    </td>
+                    <td>
+                        <input type="text" name="opponent" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>  Opponent Team Logo Image:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="team2LogoImage" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>  Location:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="location" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Match Details:</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <textarea name="details" rows="4" cols="100" required minlength="10"> </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Date:</span>
+                    </td>
+                    <td>
+                        <input type="date" name="date" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Start Time:</span>
+                    </td>
+                    <td>
+                        <input type="time" name="startTime" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> End Time:</span>
+                    </td>
+                    <td>
+                        <input type="time" name="endTime" required />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <button>Submit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>cricOmania</title>
+</head>
+
+
+<div class="headerCss">
+    <a href="/">
+        <img src="/assets/cricOmania.PNG" alt="cricOmania Logo">
+    </a>
+    <nav class="p_navigation">
+        <ul>
+            <% if(user && user.name){ %>
+                <li> Welcome <%= user.name %> !</li>
+            <% } else if(user && user.firstName) { %>
+                <li> Welcome <%= user.firstName %> !</li>
+            <% } %>
+            <% if(!user){ %>
+                <li><a href='/users/new'>Sign-up</a></li>
+                <li><a href='/users/login'>Login</a></li>
+            <% } else { %>
+                <li> <a href='/users/profile'>Profile</a></li>
+                <li><a href='/users/logout'>Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</div>
+<div class="navigator">
+    <nav>
+        <ul>
+            <li><a href="/">Home</a> &nbsp; &nbsp; &nbsp;</li>
+            <li><a href="/schedule">Schedule</a> &nbsp; &nbsp; &nbsp;</li>
+            <li><a href="/news">News</a> &nbsp; &nbsp; &nbsp;</li>
+        </ul>
+    </nav>
+
+</div>
+
+
+<% if(errorMessages.length > 0) {%>
+    <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+        <%});%>
+            <%}%>
+
+                <% if(successMessages.length > 0) {%>
+
+                    <% successMessages.forEach(message=>{%>
+                        <div class='success'>
+                            <%=message%>
+                        </div>
+                        <%});%>
+                            <%}%>

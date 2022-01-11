@@ -1,0 +1,86 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeaderSchedule.ejs')%>
+
+    <section class="workshops">
+        <br>
+        <h2 >
+            Tournament : <%= scheduleResult.tournamentTitle%>
+        </h2>
+        <br>
+        <h2>
+            Match Type : <%= scheduleResult.matchType%>
+        </h2>
+        <br>
+        <br>
+        <div class="image-txt-container">
+            <div class="event-imgLogo">
+                <img src="<%= scheduleResult.team1LogoImage %>" alt="logo" />
+            </div>
+            &nbsp;
+            &nbsp;
+            <h2>
+                <%= scheduleResult.host%>
+            </h2>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <h2>
+                VS
+            </h2>
+            
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <div class="event-imgLogo">
+                <img src="<%= scheduleResult.team2LogoImage %>" alt="logo" />
+            </div>
+            &nbsp;
+            &nbsp;
+            <h2>
+                <%= scheduleResult.opponent%>
+            </h2>
+            </div>
+        <br>
+        <br>
+        <p> Match Schedule on - <u> <%= new Date( scheduleResult.date.toISOString() ).toLocaleDateString()  %></u> </p>
+        <br>
+        <p>Start time will be - <u> <%= scheduleResult.startTime %></u> </p>
+        <br>
+        <p>End time will be - <u> <%= scheduleResult.endTime %></u> </p>
+        <br>
+        <p>Hosted By - <u> <%= scheduleResult.host %></u> </p>
+        <br>
+        <p>Match will be played at - <u> <%= scheduleResult.location %></u> </p>
+        <br>
+        <br>
+        <p>Match Details: </p>
+        <div id="event-detail">
+            <p>
+                <%= scheduleResult.details%>
+            </p>
+
+        </div>
+        <br>
+        <br>
+        <p>This schedule is Created by: <%= scheduleResult.createdBy.firstName + ' ' +  scheduleResult.createdBy.lastName%></p>
+        <br>
+        <br>
+        <% if(user && ((user._id && user._id == scheduleResult.createdBy._id) || (user.id && user.id == scheduleResult.createdBy._id)) ){ %>
+        <form>
+            <button type="Submit" formmethod="GET" formaction="/schedule/<%= scheduleResult.id %>/edit">Update</button>
+            <button type="Submit" formmethod="POST"
+                formaction="/schedule/<%= scheduleResult.id %>/?_method=DELETE">Delete</button>
+        </form>
+        <% } else if (user && (user._id || user.id) ) {  %>
+            <p>No of people attending this match: <%= count %> </p>
+            <br>
+            <form>
+                <button name="response" value="YES" class="buttons-Yes" type="Submit" formmethod="POST" formaction="/rsvp/<%= scheduleResult.id %>/edit?_method=PUT">Yes</button>
+                <button name="response" value="NO" class="buttons-No" type="Submit" formmethod="POST" formaction="/rsvp/<%= scheduleResult.id %>/edit?_method=PUT">NO</button>
+                <button name="response"  value="MAYBE" class="buttons-Maybe" type="Submit" formmethod="POST" formaction="/rsvp/<%= scheduleResult.id %>/edit?_method=PUT">MAYBE</button>
+            </form>
+        <% } %>
+        <br><br><br><br><br><br>
+    </section>
+
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,132 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeaderSchedule.ejs')%>
+    <div class="bodyblock">
+        <form method="POST" action="/schedule/<%=scheduleResult.id%>?_method=PUT">
+            <table>
+                <thead></thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span> Tournament Title/Name:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="tournamentTitle"
+                                value="<%= scheduleResult.tournamentTitle %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Match Type:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="matchType" value="<%= scheduleResult.matchType %>" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Host's Name (Home Team): </span>
+                        </td>
+                        <td>
+                            <input type="text" name="host" value="<%= scheduleResult.host %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Host Team Logo Image:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="team1LogoImage" value="<%= scheduleResult.team1LogoImage %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Opponent's Name (Away Team): </span>
+                        </td>
+                        <td>
+                            <input type="text" name="opponent" value="<%= scheduleResult.opponent %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Opponent Team Logo Image:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="team2LogoImage" value="<%= scheduleResult.team2LogoImage %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Location:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="location" value="<%= scheduleResult.location %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Match Details:</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <textarea name="details" rows="4" cols="100" minlength="10" required>  <%= scheduleResult.details %> </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Date:</span>
+                        </td>
+                        <td>
+                            <input type="date" name="date"
+                                value="<%= moment(scheduleResult.date).format('YYYY-MM-DD') %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Start Time:</span>
+                        </td>
+                        <td>
+                            <input type="time" name="startTime" value="<%= scheduleResult.startTime %>" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> End Time:</span>
+                        </td>
+                        <td>
+                            <input type="time" name="endTime" value="<%= scheduleResult.endTime %>" required />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button>Submit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>
+
+    </div>
+<%- include('../partials/footer.ejs')%>

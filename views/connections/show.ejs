@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeader.ejs')%>
+
+    <section class="workshops">
+        <br>
+        <h3>
+            <%= newsResult.title%>
+        </h3>
+        <br>
+                <small> Posted <%= new Date( newsResult.date.toISOString() ).toLocaleDateString() %> : 
+                <%= newsResult.time %> by <b>
+                        <%=newsResult.author%>
+                    </b> </small>
+        <div id="event-img">
+            <img src="<%= newsResult.image %>" alt="logo" />
+        </div>
+
+        <div id="event-detail">
+            <p>
+                <%= newsResult.content%>
+            </p>
+
+        </div>
+
+        <br>
+        <% if(user && ((user._id && user._id == newsResult.createdBy) || (user.id && user.id == newsResult.createdBy)) ){ %>
+            <form>
+                <button type="Submit" formmethod="GET" formaction="/news/<%= newsResult.id %>/edit">Update</button>
+                <button type="Submit" formmethod="POST"
+                    formaction="/news/<%= newsResult.id %>/?_method=DELETE">Delete</button>
+            </form>
+        <% } %>
+    </section>
+
+<%- include('../partials/footer.ejs')%>

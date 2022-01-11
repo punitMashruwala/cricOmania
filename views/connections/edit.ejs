@@ -1,0 +1,76 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeader.ejs')%>
+    <div class="bodyblock">
+        <form method="POST" action="/news/<%=newsResult.id%>?_method=PUT">
+            <table>
+                <tr>
+                    <td><span> Author's Name: </span></td>
+                    <td> <input type="text" name="author" value="<%= newsResult.author %>" /> </td>
+                </tr>
+                <tr>
+                    <td><span> News Title:</span></td>
+                    <td>
+                        <input type="text" name="title" value="<%= newsResult.title %>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> News Category:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="category" value="<%= newsResult.category %>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> News description:</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <textarea name="content" rows="4" cols="100"> <%= newsResult.content %> </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Iamge:</span>
+                    </td>
+                    <td>
+                        <input type="text" name="image" value="<%= newsResult.image %>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> Date:</span>
+                    </td>
+                    <td>
+                        <input type="date" name="date" value="<%= moment(newsResult.date).format('YYYY-MM-DD') %>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span> Time:</span></td>
+                    <td>
+                        <input type="time" name="time" value="<%= newsResult.time %>" />
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td></td>
+                    <td><button>Submit</button></td>
+                </tr>
+            </table>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

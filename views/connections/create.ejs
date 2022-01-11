@@ -1,0 +1,97 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/subHeader.ejs')%>
+
+    <div class="bodyblock">
+        <form action='/news' method='POST'>
+            <table>
+                <thead></thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span> Author's Name: </span>
+                        </td>
+                        <td>
+                            <input type="text" name="author" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> News Title:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="title" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> News Category:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="category" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> News description:</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <textarea name="content" rows="4" cols="100" required> </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Date:</span>
+                        </td>
+                        <td>
+                            <input type="date" name="date" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Time:</span>
+                        </td>
+                        <td>
+                            <input type="time" name="time" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> Image:</span>
+                        </td>
+                        <td>
+                            <input type="text" name="image" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button>Submit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+<%- include('../partials/footer.ejs')%>

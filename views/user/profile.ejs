@@ -1,0 +1,109 @@
+<%- include('../partials/header.ejs')%>
+    <div class="bodyblock">
+        <br>
+        <h2>Welcome, <%=user.firstName%>  from <u> <%=user.teamName%> </u>      </h2>
+      <br>
+        <% if(scheduleCreatedData.length){ %>
+            <h3>You have created following schedules:</h3>
+            <table class="table_border">
+                <thead class="table_border">
+                    <tr class="table_border">
+                        <td class="table_border">Connections</td>
+                        <td class="table_border">Category</td>
+                        <td class="table_border">Actions</td>
+                    </tr>
+                </thead>
+                <tbody class="table_border">
+                    <% scheduleCreatedData.forEach(sData=> { %>
+                        <tr class="table_border">
+                            <td class="table_border">
+                                <a href="/schedule/<%=sData._id%>">
+                                    <p>
+                                        <%= sData.host%> VS  <%= sData.opponent%> 
+                                    </p>
+                                </a>
+                            </td>
+                            <td class="table_border">
+                                <%= sData.matchType%>
+                            </td>
+                            <td class="table_border">
+                                <form>
+                                    <button type="Submit" formmethod="GET" formaction="/schedule/<%= sData.id %>/edit">Update</button>
+                                    <button type="Submit" formmethod="POST"
+                                        formaction="/schedule/<%= sData.id %>/?_method=DELETE">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        
+                        <% }) %>
+                   
+                </tbody>
+            </table>
+           
+        <% } else { %>
+            <h3>You have not created any schedules! </h3>
+        <% } %>
+        <br>
+        <br>
+
+        
+   <br>
+   <br>
+
+   <% if(rsvpData.length){%>
+      <h3>You have RSVP for the following events</h3> <br>
+      
+      <table class="table_border">
+          <thead class="table_border">
+            <tr class="table_border">
+                <th class="table_border">Connections</th>
+                <th class="table_border">Category</th>
+                <th class="table_border">Response</th>
+                <th class="table_border">Actions</th>
+            </tr>
+         </thead>
+         <tbody class="table_border">
+          <% rsvpData.forEach(event =>{%>
+            <tr class="table_border">
+                <td class="table_border"><a href = '/schedule/<%=event.scheduleId._id%>'><p class="hideextra"> <%= event.scheduleId.host%> VS  <%= event.scheduleId.opponent%></p></a></td>
+                <td class="table_border"><a href = '/schedule/<%=event.scheduleId._id%>'><p class="hideextra"><%=event.scheduleId.matchType%></p></a></td>
+                <td class="table_border"><p class="hideextra"> <%=event.response %> </p></td>
+                <td class="table_border">
+                <form class="hideextra">
+                    <button class="buttons" type="submit" formmethod="GET" formaction="/schedule/<%=event.scheduleId._id%>">Update</button>
+                <button class="buttons" type="submit" formmethod="POST" formaction="/rsvp/<%=event.id%>/delete?_method=DELETE">Delete</button>
+                </form>
+                </td>            
+            </tr>
+          </tbody> 
+          <%});%>
+      
+        </table>
+
+ <% } else{%>
+      <p>You have not given RSVP for any events</p>
+ <% }%>
+
+ <br>
+ <br>
+
+        <% if(schedules.length){ %>
+            <h3>You have following upcoming matches:</h3>
+            <% schedules.forEach(data=> { %>
+                <a href="/schedule/<%=data._id%>">
+                    <p>
+                        <%= data.host%> VS  <%= data.opponent%> 
+                    </p>
+                </a>
+                <% }) %>
+        <% } else { %>
+            <h3>You don't have any upcoming matches</h3>
+        <% } %>
+
+        <br>
+        <% let i=19;  if(schedules.length) { i= 17 - schedules.length }%>
+        <% for (let j=0; j < i; j++) { %>
+            <br>
+        <% }%>
+    </div>
+<%- include('../partials/footer.ejs')%>
